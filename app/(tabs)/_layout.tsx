@@ -1,37 +1,24 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { colors } from "@/const/style";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { Tabs } from "expo-router";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+export default function Layout()
+{
+    return(
+    <Tabs screenOptions={{
         headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
+        tabBarActiveTintColor: colors.hot,
+    }}>
+        <Tabs.Screen name="home" options=
+        {{
+            title: 'Home',
+            tabBarIcon: ({color}) => <AntDesign color={color} size={17} name="home"/>
+        }}/>
+        <Tabs.Screen name="explore" options=
+        {{
+            title: 'Discover',
+            tabBarIcon: ({color}) => <AntDesign color={color} size={17} name="search1"/>
+        }}/>
     </Tabs>
-  );
+    );
 }
